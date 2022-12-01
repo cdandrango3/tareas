@@ -51,7 +51,7 @@ tareas: Tarea={
   }
   actualizarEstado(id:number,indice:number){
     this.tareas.description=this.listaTareas[indice].description
-    this.tareas.status=this.listaTareas[indice].status==1?0:1
+    this.tareas.status=1
     this.service.updateTarea(this.tareas,id).then((data) => {
       this.listaTareasComplete=this.listaTareas.filter((tarea) => tarea.status == 1);
       this.numero=this.listaTareasComplete.length
