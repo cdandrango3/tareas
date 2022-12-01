@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="mb-3">
+        <label for="" class="form-label">cosas anadir</label>
+        <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId"><button class="btn btn-dark"> buscar</button>
+        <small id="helpId" class="text-muted">Help text</small>
+      </div>
+      <ng-container *ngFor="let lista of listaTareas">
+          <ul class="list-group list-group-numbered">
+              <li class="list-group-item">{{lista.description}}</li>
+             
+          </ul>
+        
+            
+      </ng-container>
+      
+</div>
