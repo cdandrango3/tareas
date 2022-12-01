@@ -1,12 +1,15 @@
 <div class="container">
     <div class="mb-3">
         <label for="" class="form-label">cosas anadir</label>
-        <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId" [(ngModel)]="tareas.description"><button class="btn btn-dark" (click)="agregarTarea()"> agregar</button>
+        <input value="" type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId" [(ngModel)]="tareas.description"><button class="btn btn-dark" (click)="agregarTarea()"> agregar</button>
         <small id="helpId" class="text-muted">Help text</small>
       </div>
       <ng-container *ngFor="let lista of listaTareas;let indice=index">
           <ul class="list-group list-group-numbered">
-            <li>
+        
+              <li *ngIf="lista.status==0" class="list-group-item">{{lista.description}}</li>
+              <li *ngIf="lista.status==1" class="list-group-item"><del>{{lista.description}}</del></li>
+              <li>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"  [(ngModel)]="lista.status" (change)="actualizarEstado(lista.id,indice)">
                     <label class="form-check-label" for="flexCheckDefault">
@@ -14,14 +17,10 @@
                     </label>
                   </div>
             </li>
-              <li class="list-group-item">{{lista.description}}</li>
               <button (click)="eliminarTarea(lista.id)" class="btn btn-danger">
                 eliminar
              </button>
-            </ul>
-        
-        
-            
+            </ul>            
       </ng-container>
       Tareas Terminadas {{numero}}
 </div>

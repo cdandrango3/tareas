@@ -17,7 +17,7 @@ listaTareas: any[];
 listaTareasComplete: any[];
 numero:number
 tareas: Tarea={
-  description: 's',
+  description: '',
   status:0,
   id_author:3,
   finish_at: "2022-06-03T21:47:23.000Z"
@@ -47,10 +47,11 @@ tareas: Tarea={
       console.log(data)
       this.listaTareas.push(data.data);
     })
+    this.tareas.description = '';
   }
   actualizarEstado(id:number,indice:number){
     this.tareas.description=this.listaTareas[indice].description
-    this.tareas.status=1
+    this.tareas.status=this.listaTareas[indice].status==1?0:1
     this.service.updateTarea(this.tareas,id).then((data) => {
       this.listaTareasComplete=this.listaTareas.filter((tarea) => tarea.status == 1);
       this.numero=this.listaTareasComplete.length
